@@ -621,6 +621,7 @@ fn yaml_to_value(yaml: Yaml) -> Value {
         Yaml::Alias(_) => panic!("alias unsupported"),
         Yaml::Null => Value::Null,
         Yaml::BadValue => panic!("bad value"),
+        Yaml::CommentedYaml(yaml_rust::yaml::CommentedYaml(yaml, ..)) => yaml_to_value(*yaml)
     }
 }
 
